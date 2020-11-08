@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 
 namespace BL.Model
 {
+    [Serializable]
     public class User
     {
         #region properties
         public string Name { get; }
 
-        public Gender Gender { get; }
+        public Gender Gender { get; set; }
 
-        public DateTime Birth { get; }
+        public DateTime Birth { get; set; }
 
         public double Weight { get; set; }
 
         public double Height { get; set; }
+
+        public int Age { get { return DateTime.Now.Year - Birth.Year; } }
         #endregion
 
         public User(string name, Gender gender, DateTime birth, double weight, double height)
@@ -56,9 +59,19 @@ namespace BL.Model
             Height = height;
         }
 
+        public User(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Неможливе ім'я користувача.", nameof(name));
+            }
+
+            Name = name;
+        }
+
         public override string ToString()
         {
-            return Name;
+            return Name + " " + Age;
         }
     }
 }
