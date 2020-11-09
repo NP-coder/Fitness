@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace BL.Control
 {
-    public class UserControl
+    public class UserControl : Base
     {
+        private const string USERS_FILE_NAME = "users.dat";
+
         public List<User> Users { get; }
 
         public User CurrentUser { get; }
@@ -47,28 +49,12 @@ namespace BL.Control
 
         public void Save()
         {
-            var formater = new BinaryFormatter();
-            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                formater.Serialize(fs, Users);
-            }
+            Save(USERS_FILE_NAME, Users);
         }
 
         private List<User> GetUsersData()
         {
-            var formater = new BinaryFormatter();
-
-            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                if( formater.Deserialize(fs) is List<User> users)
-                {
-                    return users;
-                }
-                else
-                {
-                    return new List<User>();
-                }
-            }
+            return Load<List<User>>(USERS_FILE_NAME) ?? new List<User>();
         }
     }
 
