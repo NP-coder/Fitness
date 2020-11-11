@@ -38,7 +38,6 @@ namespace BL.Model
             Proteines = prot / 100.0;
             Fats = fats / 100.0;
             Carbohydrates = carb / 100.0;
-
         }
 
         public override string ToString()
