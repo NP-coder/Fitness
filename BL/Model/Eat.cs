@@ -9,16 +9,20 @@ namespace BL.Model
     [Serializable]
     public class Eat
     {
-        public DateTime Moment { get; }
+        public int ID { get; set; }
+        public DateTime Moment { get; set; }
 
-        public Dictionary<Food, double> Foods { get; }
+        public Dictionary<Food, double> Foods { get; set; }
 
-        public User User { get; }
+        public int UserID { get; set; }
 
+        public virtual User User { get; set; }
+
+        public Eat() { }
         public Eat(User user)
         {
             User = user;
-            Moment = DateTime.Now;
+            Moment = DateTime.UtcNow;
             Foods = new Dictionary<Food, double>();
         }
 

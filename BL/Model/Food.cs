@@ -9,25 +9,20 @@ namespace BL.Model
     [Serializable]
     public class Food
     {
-        #region properties
-        public string Name { get; }
 
-        public double Proteines { get;} //belki
+        public int ID { get; set; }
+        public string Name { get; set; }
 
-        public double Fats { get;} //giri
+        public double Proteines { get; set; } //belki
 
-        public double Carbohydrates { get; } //uglerodi
+        public double Fats { get; set; } //giri
 
-        public double Calories { get; }
+        public double Carbohydrates { get; set; } //uglerodi
 
-        private double CaloriesOneGram { get { return Calories / 100.0; } }
+        public double Calories { get; set; }
+        public virtual ICollection<Eat> Eatings { get; set; }
 
-        private double ProteinesOneGram { get { return Proteines / 100.0; } }
-
-        private double FatsOneGram { get { return Fats / 100.0; } } 
-
-        private double CarbohydratesOneGram { get { return Carbohydrates / 100.0; } }
-        #endregion
+        public Food() { }
 
         public Food(string name) : this(name, 0, 0, 0, 0) { }
 

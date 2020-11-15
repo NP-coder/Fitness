@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BL.Model
 {
@@ -10,15 +7,21 @@ namespace BL.Model
     public class User
     {
         #region properties
-        public string Name { get; }
+        public int ID { get; set; }
+        public string Name { get; set; }
 
-        public Gender Gender { get; set; }
+        public int? GenderId { get; set; }
 
-        public DateTime Birth { get; set; }
+        public virtual Gender Gender { get; set; }
+
+        public DateTime Birth { get; set; } = DateTime.Now;
 
         public double Weight { get; set; }
 
         public double Height { get; set; }
+
+        public virtual ICollection<Eat> Eatings { get; set; }
+        public virtual ICollection<Exercise> Exercises { get; set; }
 
         public int Age { get { return DateTime.Now.Year - Birth.Year; } }
         #endregion
@@ -59,6 +62,7 @@ namespace BL.Model
             Height = height;
         }
 
+        public User() { }
         public User(string name)
         {
             if (string.IsNullOrWhiteSpace(name))

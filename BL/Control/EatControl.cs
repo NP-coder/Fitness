@@ -11,8 +11,6 @@ namespace BL.Control
 {
     public class EatControl : Base
     {
-        private const string FOODS_FILE_NAME = "foods.dat";
-        private const string EAT_FILE_NAME = "eat.dat";
         private readonly User user;
 
         public List<Food> Foods { get; }
@@ -44,18 +42,18 @@ namespace BL.Control
 
         private Eat GetEating()
         {
-            return Load<Eat>(EAT_FILE_NAME) ?? new Eat(user);
+            return Load<Eat>().FirstOrDefault() ?? new Eat(user);
         }
 
         private List<Food> GetAllFoods()
         {
-            return Load<List<Food>>(FOODS_FILE_NAME) ?? new List<Food>();
+            return Load<Food>() ?? new List<Food>();
         }
 
         private void Save()
         {
-            Save(FOODS_FILE_NAME, Foods);
-            Save(EAT_FILE_NAME, Eating);
+            Save(Foods);
+            Save(new List<Eat>() { Eating });
         }
        
     }

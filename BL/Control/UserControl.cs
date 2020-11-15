@@ -1,18 +1,12 @@
 ﻿using BL.Model;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BL.Control
 {
     public class UserControl : Base
     {
-        private const string USERS_FILE_NAME = "users.dat";
-
         public List<User> Users { get; }
 
         public User CurrentUser { get; }
@@ -34,7 +28,6 @@ namespace BL.Control
                 CurrentUser = new User(userName);
                 Users.Add(CurrentUser);
                 NewUser = true;
-                Save();
             }
         }
 
@@ -49,12 +42,12 @@ namespace BL.Control
 
         public void Save()
         {
-            Save(USERS_FILE_NAME, Users);
+            Save(Users);
         }
 
         private List<User> GetUsersData()
         {
-            return Load<List<User>>(USERS_FILE_NAME) ?? new List<User>();
+            return Load<User>() ?? new List<User>();
         }
     }
 

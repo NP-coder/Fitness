@@ -9,14 +9,18 @@ namespace BL.Model
     [Serializable]
     public class Exercise
     {
-        public DateTime Start { get; }
+        public int ID { get; set; }
+        public DateTime Start { get; set; }
 
-        public DateTime Finish { get; }
+        public DateTime Finish { get; set; }
 
-        public Activity Activity { get; }
+        public int ActivityID { get; set; }
 
-        public User User { get; }
+        public virtual Activity Activity { get; set; }
+        public int UserID { get; set; }
+        public virtual User User { get; set; }
 
+        public Exercise() { }
         public Exercise(DateTime start, DateTime finish, Activity activity, User user)
         {
             Start = start;

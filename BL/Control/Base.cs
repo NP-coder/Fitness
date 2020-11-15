@@ -10,30 +10,16 @@ namespace BL.Control
 {
     public abstract class Base
     {
-        protected void Save(string filename, object item)
+        private readonly IDataSaver manager = new DatabaseDatasaver();
+
+        protected void Save<T>(List<T> item) where T : class
         {
-            var formater = new BinaryFormatter();
-            using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
-            {
-                formater.Serialize(fs, item);
-            }
+            manager.Save(item);
         }
 
-        protected T Load<T>(string filename)
+        protected List<T> Load<T>() where T : class
         {
-            var formater = new BinaryFormatter();
-
-            using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
-            {
-                if (fs.Length > 1 && formater.Deserialize(fs) is T items)
-                {
-                    return items;
-                }
-                else
-                {
-                    return default(T);
-                }
-            }
+            return manager.Load<T>();
         }
     }
 }
