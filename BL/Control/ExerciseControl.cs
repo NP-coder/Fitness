@@ -14,8 +14,6 @@ namespace BL.Control
 
         public List<Activity> Activities { get; }
 
-
-
         public ExerciseControl(User user)
         {
             this.user = user;

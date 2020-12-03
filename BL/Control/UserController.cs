@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BL.Control
 {
-    public class UserControl : Base
+    public class UserControler : Base
     {
         public List<User> Users { get; }
 
@@ -13,7 +13,7 @@ namespace BL.Control
 
         public bool NewUser { get; } = false;
 
-        public UserControl(string userName)
+        public UserControler(string userName)
         {
             if (string.IsNullOrWhiteSpace(userName))
             {
@@ -22,7 +22,7 @@ namespace BL.Control
 
             Users = GetUsersData();
 
-            CurrentUser = Users.SingleOrDefault(u => u.Name == userName);
+            CurrentUser = Users.FirstOrDefault(u => u.Name == userName);
             if(CurrentUser == null)
             {
                 CurrentUser = new User(userName);

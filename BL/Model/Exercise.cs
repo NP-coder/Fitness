@@ -17,7 +17,9 @@ namespace BL.Model
         public int ActivityID { get; set; }
 
         public virtual Activity Activity { get; set; }
+
         public int UserID { get; set; }
+
         public virtual User User { get; set; }
 
         public Exercise() { }

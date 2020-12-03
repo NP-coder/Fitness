@@ -15,7 +15,7 @@ namespace CMD
             Console.WriteLine("Your name:");
             var name = Console.ReadLine();
 
-            var userController = new UserControl(name);
+            var userController = new UserControler(name);
             var eatingController = new EatControl(userController.CurrentUser);
             var exerciseControler = new ExerciseControl(userController.CurrentUser);
 

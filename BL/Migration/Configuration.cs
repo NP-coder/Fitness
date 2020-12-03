@@ -2,7 +2,7 @@
 
 namespace BL.Migration
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<BL.Control.FitnessContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Control.FitnessContext>
     {
         public Configuration()
         {
