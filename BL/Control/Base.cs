@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace BL.Control
 {
     public abstract class Base
@@ -16,5 +17,7 @@ namespace BL.Control
         {
             return manager.Load<T>();
         }
+
+       
     }
 }

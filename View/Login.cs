@@ -1,52 +1,65 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BL.Control;
-using BL.Model;
 
 
 namespace View
 {
     public partial class Login : Form
     {
+
         public Login()
         {
             InitializeComponent();
         }
-          
-        private void button1_Click(object sender, EventArgs e)
+
+        public UserControler userController;
+       
+        public void button1_Click(object sender, EventArgs e)
         {
             try
             {
                 var name = nameField.Text;
+
+                userController = new UserControler(name);
+
                 var gender = genderField.Text;
-
-                var userController = new UserControler(name);
-
                 var birth = DateTime.Parse(ageField.Text);
                 var weight = Double.Parse(weightField.Text);
                 var height = Double.Parse(heightField.Text);
 
-                userController.SetNewUserData(gender, birth, weight, height);
+               userController.SetNewUserData(gender, birth, weight, height);
 
-                
+                this.Hide();
+                main mainform = new main(this);
+                mainform.Show();
+
             }
             catch
             {
-                MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK,MessageBoxIcon.Error,  MessageBoxDefaultButton.Button1,      MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
             }
 
+           
         }
 
       
-        private void button2_Click(object sender, EventArgs e)
+        public void button2_Click(object sender, EventArgs e)
         {
             var name = nameField2.Text;
-            var userController = new UserControler(name);
-            MessageBox.Show(userController.CurrentUser.ToString());
+            userController = new UserControler(name);
+
+            if(userController.NewUser == false)
+            {
+                this.Hide();
+                main mainform = new main(this);
+                mainform.Show();
+            }  
         }
 
         

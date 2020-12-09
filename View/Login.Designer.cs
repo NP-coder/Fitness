@@ -150,7 +150,7 @@
             // 
             // heightField
             // 
-            this.heightField.Location = new System.Drawing.Point(59, 260);
+            this.heightField.Location = new System.Drawing.Point(59, 266);
             this.heightField.Multiline = true;
             this.heightField.Name = "heightField";
             this.heightField.Size = new System.Drawing.Size(173, 30);
@@ -309,21 +309,21 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox nameField2;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox heightField;
-        private System.Windows.Forms.TextBox weightField;
         private System.Windows.Forms.TextBox ageField;
         private System.Windows.Forms.TextBox genderField;
-        private System.Windows.Forms.TextBox nameField;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox nameField2;
+        public System.Windows.Forms.TextBox heightField;
+        public System.Windows.Forms.TextBox weightField;
+        public System.Windows.Forms.TextBox nameField;
     }
 }
