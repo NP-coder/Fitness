@@ -24,15 +24,11 @@ namespace View
             username.Text = user.CurrentUser.Name;
         }
 
-        public main(Food food)
-        {
-            eat = food.eatControl;
-            
-        }
 
         private void Product_Click(object sender, EventArgs e)
         {
-            Food foodform = new Food(this);
+            FoodForm foodform = new FoodForm();
+            foodform.Owner = this;
             foodform.Show();
         }
 

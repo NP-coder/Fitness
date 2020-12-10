@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class Food
+    partial class FoodForm
     {
         /// <summary>
         /// Required designer variable.
@@ -110,11 +110,12 @@
             this.FoodGrid.Name = "FoodGrid";
             this.FoodGrid.RowHeadersWidth = 51;
             this.FoodGrid.RowTemplate.Height = 24;
+            this.FoodGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.FoodGrid.Size = new System.Drawing.Size(699, 334);
             this.FoodGrid.TabIndex = 3;
+            this.FoodGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FoodGrid_CellClick);
             this.FoodGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FoodGrid_CellContentClick);
             this.FoodGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.FoodGrid_CellValueChanged);
-            this.FoodGrid.SelectionChanged += new System.EventHandler(this.FoodGrid_SelectionChanged);
             this.FoodGrid.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.FoodGrid_UserAddedRow);
             // 
             // panel1
@@ -141,14 +142,14 @@
             this.label1.Text = "Харчові продукти";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Food
+            // FoodForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 566);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Name = "Food";
+            this.Name = "FoodForm";
             this.Text = "Food";
             this.Load += new System.EventHandler(this.Food_Load);
             this.panel3.ResumeLayout(false);

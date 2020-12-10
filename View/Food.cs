@@ -7,23 +7,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BL.Control;
+using BL.Model;
 
 namespace View
 {
-    public partial class Food : Form
+    public partial class FoodForm : Form
     {
         private SqlConnection sqlConnection = null;
         private SqlCommandBuilder sqldBuilder = null;
         private SqlDataAdapter sqldataAdapter = null;
         private DataSet dataSet = null;
         bool newRowAdding = false;
-        public EatControl eatControl;
         public UserControler user;
+        double calories, prot, fats, carb;
+        string productname;
 
-        public Food(main main)
+
+        public FoodForm()
         {
             InitializeComponent();
-            user = main.user;
         }
 
         private void Food_Load(object sender, EventArgs e)
@@ -37,15 +39,22 @@ namespace View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            eatControl = new EatControl(user.CurrentUser);
-            
+            Food product = new Food(productname, calories, prot, fats, carb);
+            main main = this.Owner as main;
+            if (main != null)
+            {
+                main.Belki.Text = product.Proteines.ToString();
+            }
         }
 
-        private void FoodGrid_SelectionChanged(object sender, EventArgs e)
+        private void FoodGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            calories = double.Parse(FoodGrid.Rows[e.RowIndex].Cells[5].Value.ToString());
+            carb = double.Parse(FoodGrid.Rows[e.RowIndex].Cells[4].Value.ToString());
+            fats = double.Parse(FoodGrid.Rows[e.RowIndex].Cells[3].Value.ToString());
+            prot = double.Parse(FoodGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
+            productname = FoodGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
         }
-
 
         private void FoodGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -57,7 +66,7 @@ namespace View
 
                     if (task == "Delete")
                     {
-                        if (MessageBox.Show("Ви хочете удалити цю строку?", "Удалити", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                        if (MessageBox.Show("Ви хочете видалити цю строку?", "Удалити", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                             == DialogResult.Yes)
                         {
                             int rowIndex = e.RowIndex;
@@ -198,6 +207,6 @@ namespace View
             }
         }
 
-       
+
     }
 }

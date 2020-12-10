@@ -345,7 +345,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label username;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label Belki;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Product;
         private System.Windows.Forms.Label label3;
@@ -361,5 +360,6 @@
         private System.Windows.Forms.Button Exercise;
         private System.Windows.Forms.ComboBox ActivLevel;
         private System.Windows.Forms.Label CaloriesMax;
+        public System.Windows.Forms.Label Belki;
     }
 }
