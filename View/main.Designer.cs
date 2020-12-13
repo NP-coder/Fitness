@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BurnedCalories = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             this.CaloriesMax = new System.Windows.Forms.Label();
             this.ActivLevel = new System.Windows.Forms.ComboBox();
             this.Exercise = new System.Windows.Forms.Button();
@@ -68,6 +70,8 @@
             // 
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(164)))), ((int)(((byte)(255)))));
+            this.panel2.Controls.Add(this.BurnedCalories);
+            this.panel2.Controls.Add(this.label);
             this.panel2.Controls.Add(this.CaloriesMax);
             this.panel2.Controls.Add(this.ActivLevel);
             this.panel2.Controls.Add(this.Exercise);
@@ -92,12 +96,34 @@
             this.panel2.Size = new System.Drawing.Size(807, 563);
             this.panel2.TabIndex = 2;
             // 
+            // BurnedCalories
+            // 
+            this.BurnedCalories.AutoSize = true;
+            this.BurnedCalories.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BurnedCalories.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BurnedCalories.Location = new System.Drawing.Point(443, 449);
+            this.BurnedCalories.Name = "BurnedCalories";
+            this.BurnedCalories.Size = new System.Drawing.Size(23, 23);
+            this.BurnedCalories.TabIndex = 20;
+            this.BurnedCalories.Text = "0";
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Lucida Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label.Location = new System.Drawing.Point(252, 445);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(176, 27);
+            this.label.TabIndex = 19;
+            this.label.Text = "Спалені калорії:";
+            // 
             // CaloriesMax
             // 
             this.CaloriesMax.AutoSize = true;
             this.CaloriesMax.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaloriesMax.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CaloriesMax.Location = new System.Drawing.Point(214, 287);
+            this.CaloriesMax.Location = new System.Drawing.Point(241, 286);
             this.CaloriesMax.Name = "CaloriesMax";
             this.CaloriesMax.Size = new System.Drawing.Size(23, 23);
             this.CaloriesMax.TabIndex = 18;
@@ -134,7 +160,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label13.Location = new System.Drawing.Point(171, 357);
+            this.label13.Location = new System.Drawing.Point(205, 358);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(51, 23);
             this.label13.TabIndex = 15;
@@ -167,7 +193,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label10.Location = new System.Drawing.Point(610, 356);
+            this.label10.Location = new System.Drawing.Point(637, 357);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(64, 23);
             this.label10.TabIndex = 12;
@@ -178,7 +204,7 @@
             this.Fats.AutoSize = true;
             this.Fats.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fats.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Fats.Location = new System.Drawing.Point(532, 287);
+            this.Fats.Location = new System.Drawing.Point(533, 287);
             this.Fats.Name = "Fats";
             this.Fats.Size = new System.Drawing.Size(23, 23);
             this.Fats.TabIndex = 11;
@@ -189,7 +215,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(561, 286);
+            this.label8.Location = new System.Drawing.Point(599, 287);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 23);
             this.label8.TabIndex = 10;
@@ -279,7 +305,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(189, 285);
+            this.label4.Location = new System.Drawing.Point(218, 285);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 23);
             this.label4.TabIndex = 5;
@@ -329,6 +355,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "main";
             this.Text = "Fitness";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.main_FormClosed);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -349,10 +376,7 @@
         private System.Windows.Forms.Button Product;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label Calories;
-        private System.Windows.Forms.Label Uglerod;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label Fats;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -361,5 +385,10 @@
         private System.Windows.Forms.ComboBox ActivLevel;
         private System.Windows.Forms.Label CaloriesMax;
         public System.Windows.Forms.Label Belki;
+        public System.Windows.Forms.Label Calories;
+        public System.Windows.Forms.Label Uglerod;
+        public System.Windows.Forms.Label Fats;
+        private System.Windows.Forms.Label label;
+        public System.Windows.Forms.Label BurnedCalories;
     }
 }

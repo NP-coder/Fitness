@@ -105,13 +105,13 @@
             this.FoodGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(164)))), ((int)(((byte)(255)))));
             this.FoodGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FoodGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.FoodGrid.Location = new System.Drawing.Point(0, 132);
+            this.FoodGrid.Location = new System.Drawing.Point(0, 142);
             this.FoodGrid.MultiSelect = false;
             this.FoodGrid.Name = "FoodGrid";
             this.FoodGrid.RowHeadersWidth = 51;
             this.FoodGrid.RowTemplate.Height = 24;
             this.FoodGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.FoodGrid.Size = new System.Drawing.Size(699, 334);
+            this.FoodGrid.Size = new System.Drawing.Size(699, 324);
             this.FoodGrid.TabIndex = 3;
             this.FoodGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FoodGrid_CellClick);
             this.FoodGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FoodGrid_CellContentClick);
@@ -149,6 +149,8 @@
             this.ClientSize = new System.Drawing.Size(699, 566);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.MaximumSize = new System.Drawing.Size(717, 613);
+            this.MinimumSize = new System.Drawing.Size(717, 613);
             this.Name = "FoodForm";
             this.Text = "Food";
             this.Load += new System.EventHandler(this.Food_Load);

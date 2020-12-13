@@ -52,20 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\Base.cs" />
     <Compile Include="Control\DatabaseDatasaver.cs" />
     <Compile Include="Control\EatControl.cs" />
     <Compile Include="Control\ExerciseControl.cs" />
     <Compile Include="Control\FitnessContext.cs" />
-    <Compile Include="Control\IDataSaver.cs" />
-    <Compile Include="Control\SerializeDataSaver.cs" />
     <Compile Include="Control\UserController.cs" />
     <Compile Include="Migration\Configuration.cs" />
     <Compile Include="Model\Activity.cs" />
-    <Compile Include="Model\Eat.cs" />
-    <Compile Include="Model\Exercise.cs" />
     <Compile Include="Model\Food.cs" />
-    <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -3,30 +3,21 @@ using System.Collections.Generic;
 
 namespace BL.Model
 {
-    [Serializable]
     public class User
     {
-        #region properties
         public int ID { get; set; }
+
         public string Name { get; set; }
 
-        public int? GenderId { get; set; }
-
-        public virtual Gender Gender { get; set; }
-
-        public DateTime Birth { get; set; } = DateTime.Now;
+        public string  Gender { get; set; }
 
         public double Weight { get; set; }
 
         public double Height { get; set; }
 
-        public virtual ICollection<Eat> Eatings { get; set; }
-        public virtual ICollection<Exercise> Exercises { get; set; }
+        public int Age { get; set; }
 
-        public int Age { get { return DateTime.Now.Year - Birth.Year; } }
-        #endregion
-
-        public User(string name, Gender gender, DateTime birth, double weight, double height)
+        public User(string name, string gender, int age, double weight, double height)
         {
             #region exeption
             if (string.IsNullOrWhiteSpace(name))
@@ -39,9 +30,9 @@ namespace BL.Model
                 throw new ArgumentNullException("Неможливий пол.", nameof(gender));
             }
 
-            if(birth < DateTime.Parse("01.01.1900") || birth >= DateTime.Now)
+            if(age < 1 || age >= 150)
             {
-                throw new ArgumentNullException("Неможлива дата народження.", nameof(birth));
+                throw new ArgumentNullException("Неможлива дата народження.", nameof(age));
             }
 
             if(weight <= 0)
@@ -57,12 +48,13 @@ namespace BL.Model
 
             Name = name;
             Gender = gender;
-            Birth = birth;
+            Age = age;
             Weight = weight;
             Height = height;
         }
 
         public User() { }
+
         public User(string name)
         {
             if (string.IsNullOrWhiteSpace(name))

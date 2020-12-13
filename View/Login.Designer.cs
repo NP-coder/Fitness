@@ -34,11 +34,11 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.heightField = new System.Windows.Forms.TextBox();
             this.weightField = new System.Windows.Forms.TextBox();
             this.ageField = new System.Windows.Forms.TextBox();
-            this.genderField = new System.Windows.Forms.TextBox();
             this.nameField = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -120,11 +120,11 @@
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel4.Controls.Add(this.comboBox1);
             this.panel4.Controls.Add(this.button1);
             this.panel4.Controls.Add(this.heightField);
             this.panel4.Controls.Add(this.weightField);
             this.panel4.Controls.Add(this.ageField);
-            this.panel4.Controls.Add(this.genderField);
             this.panel4.Controls.Add(this.nameField);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.label5);
@@ -136,6 +136,18 @@
             this.panel4.Size = new System.Drawing.Size(279, 382);
             this.panel4.TabIndex = 0;
             this.panel4.Visible = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "М",
+            "Ж"});
+            this.comboBox1.Location = new System.Drawing.Point(62, 85);
+            this.comboBox1.MinimumSize = new System.Drawing.Size(170, 0);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(170, 24);
+            this.comboBox1.TabIndex = 11;
             // 
             // button1
             // 
@@ -172,14 +184,6 @@
             this.ageField.Size = new System.Drawing.Size(173, 30);
             this.ageField.TabIndex = 7;
             // 
-            // genderField
-            // 
-            this.genderField.Location = new System.Drawing.Point(59, 85);
-            this.genderField.Multiline = true;
-            this.genderField.Name = "genderField";
-            this.genderField.Size = new System.Drawing.Size(173, 30);
-            this.genderField.TabIndex = 6;
-            // 
             // nameField
             // 
             this.nameField.Location = new System.Drawing.Point(59, 20);
@@ -214,9 +218,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(6, 147);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 20);
+            this.label4.Size = new System.Drawing.Size(34, 20);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Д.Н.";
+            this.label4.Text = "Вік";
             // 
             // label3
             // 
@@ -224,9 +228,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(6, 85);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 20);
+            this.label3.Size = new System.Drawing.Size(61, 20);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Пол";
+            this.label3.Text = "Стать";
             // 
             // label2
             // 
@@ -315,7 +319,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox ageField;
-        private System.Windows.Forms.TextBox genderField;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -325,5 +328,6 @@
         public System.Windows.Forms.TextBox heightField;
         public System.Windows.Forms.TextBox weightField;
         public System.Windows.Forms.TextBox nameField;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

@@ -1,29 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using BL.Control;
-using System.Data.SqlClient;
+using BL.Model;
 
 namespace View
 {
     public partial class main : Form
     {
         double activlevel;
-        public UserControler user;
-        EatControl eat;
-        ExerciseControl exercise;
+        public UserControler usercontroler;
 
         public main(Login login)
         {
             InitializeComponent();
-            user = login.userController;
-            username.Text = user.CurrentUser.Name;
-        }
 
+            usercontroler = login.userController;
+            username.Text = usercontroler.CurrentUser.Name;
+        }
 
         private void Product_Click(object sender, EventArgs e)
         {
@@ -34,32 +28,27 @@ namespace View
 
         private void Exercise_Click(object sender, EventArgs e)
         {
-            Activity activityform = new Activity();
+            Activ activityform = new Activ();
+            activityform.Owner = this;
             activityform.Show();
         }
 
-        private double HarissBenedict(double weight, double height, int age, double activlevel)
-        {
-            double result = Math.Round((655.1 + 9.563 * weight + 1.85 * height - 4.676 * age) * activlevel);
-            return result;
-        }
-
-        private void ActivLevel_SelectedIndexChanged(object sender, EventArgs e)
+        private void ActivLevel_SelectedIndexChanged(object sender, EventArgs e) 
         {
             if (ActivLevel.SelectedIndex == 0)
             {
                 activlevel = 1.3;
-                CaloriesMax.Text = HarissBenedict(user.CurrentUser.Weight, user.CurrentUser.Height, user.CurrentUser.Age, activlevel).ToString();
+                CaloriesMax.Text = usercontroler.HarissBenedict(activlevel).ToString();
             }
             else if (ActivLevel.SelectedIndex == 1)
             {
                 activlevel = 1.55;
-                CaloriesMax.Text = HarissBenedict(user.CurrentUser.Weight, user.CurrentUser.Height, user.CurrentUser.Age, activlevel).ToString();
+                CaloriesMax.Text = usercontroler.HarissBenedict(activlevel).ToString();
             }
             else if (ActivLevel.SelectedIndex == 2)
             {
                 activlevel = 1.8;
-                CaloriesMax.Text = HarissBenedict(user.CurrentUser.Weight, user.CurrentUser.Height, user.CurrentUser.Age, activlevel).ToString();
+                CaloriesMax.Text = usercontroler.HarissBenedict(activlevel).ToString();
             }
             else
             {
@@ -67,6 +56,9 @@ namespace View
             }
         }
 
-
+        private void main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

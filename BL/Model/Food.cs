@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace BL.Model
 {
-    [Serializable]
     public class Food
     {
-
         public int ID { get; set; }
+
         public string Name { get; set; }
 
         public double Proteines { get; set; } //belki
@@ -20,19 +19,16 @@ namespace BL.Model
         public double Carbohydrates { get; set; } //uglerodi
 
         public double Calories { get; set; }
-        public virtual ICollection<Eat> Eatings { get; set; }
 
         public Food() { }
-
-        public Food(string name) : this(name, 0, 0, 0, 0) { }
 
         public Food(string name, double calories, double prot, double fats, double carb)
         {
             Name = name;
-            Calories = calories / 100.0;
-            Proteines = prot / 100.0;
-            Fats = fats / 100.0;
-            Carbohydrates = carb / 100.0;
+            Calories = calories ;
+            Proteines = prot ;
+            Fats = fats ;
+            Carbohydrates = carb;
         }
 
         public override string ToString()

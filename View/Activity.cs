@@ -3,25 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BL.Control;
-
+using BL.Model;
 
 namespace View
 {
-    public partial class Activity : Form  
+    public partial class Activ : Form  
     {
-        private SqlConnection sqlConnection = null;
-        private SqlCommandBuilder sqldBuilder = null;
-        private SqlDataAdapter sqldataAdapter = null;
-        private DataSet dataSet = null;
-        bool newRowAdding = false;
+        ExerciseControl exerciseControl;
+        string tableName = "Activities";
+        string exerciseName;
+        double caloriesperminet, burned;
+        private Label Calories;
 
-        public Activity()
+        public Activ()
         {
             InitializeComponent();
         }
@@ -29,108 +25,49 @@ namespace View
 
         private void Activity_Load(object sender, EventArgs e)
         {
-            sqlConnection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DBConnection;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            sqlConnection.Open();
-
-           LoadData("Activities");
+            main main = this.Owner as main;
+            if (main != null)
+            {
+                exerciseControl = new ExerciseControl(main.usercontroler.CurrentUser, tableName, ActivityGrid);
+                exerciseControl.LoadExerciseData();
+                Calories = main.BurnedCalories;
+            }
         }
-       
-         
-        
-        public void LoadData(string tableName)
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Activity activity = new Activity(exerciseName, caloriesperminet);
+            exerciseControl.AddActivity(activity, int.Parse(numericUpDown1.Value.ToString()));
+
+            burned += activity.CaloriesPerMinute;
+
+            Calories.Text = burned.ToString();
+        }
+
+        private void ActivityGrid_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
             try
             {
-                sqldataAdapter = new SqlDataAdapter($"SELECT *, 'Delete' AS [Command] FROM {tableName}", sqlConnection);
-                sqldBuilder = new SqlCommandBuilder(sqldataAdapter);
-
-                sqldBuilder.GetInsertCommand();
-                sqldBuilder.GetUpdateCommand();
-                sqldBuilder.GetDeleteCommand();
-
-
-                dataSet = new DataSet();
-                sqldataAdapter.Fill(dataSet, tableName);
-                ActivityGrid.DataSource = dataSet.Tables[tableName];
-                for (int i = 0; i < ActivityGrid.Rows.Count; i++)
-                {
-                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                    ActivityGrid[ActivityGrid.ColumnCount - 1, i] = linkCell;
-                }
-
+                exerciseControl.ExerciseAddRow();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void ReloadData(string tableName)
-        {
-            try
-            {
-                dataSet.Tables[tableName].Clear();
-                sqldataAdapter.Fill(dataSet, tableName);
-                ActivityGrid.DataSource = dataSet.Tables[tableName];
-                for (int i = 0; i < ActivityGrid.Rows.Count; i++)
-                {
-                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                    ActivityGrid[ActivityGrid.ColumnCount - 1, i] = linkCell;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ValueChange(DataGridView dataGridView)
-        {
-            try
-            {
-                if (newRowAdding == false)
-                {
-                    int rowIndex = dataGridView.SelectedCells[0].RowIndex;
-                    DataGridViewRow editRow = dataGridView.Rows[rowIndex];
-                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                    dataGridView[dataGridView.ColumnCount - 1, rowIndex] = linkCell;
-                    editRow.Cells["Command"].Value = "Update";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void AddRow(DataGridView dataGridView)
-        {
-            try
-            {
-                if (newRowAdding == false)
-                {
-                    newRowAdding = true;
-                    int lastRow = dataGridView.Rows.Count - 2;
-                    DataGridViewRow row = dataGridView.Rows[lastRow];
-                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                    dataGridView[dataGridView.ColumnCount - 1, lastRow] = linkCell;
-                    row.Cells["Command"].Value = "Insert";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ActivityGrid_UserAddedRow_1(object sender, DataGridViewRowEventArgs e)
-        {
-            AddRow(ActivityGrid);
+           
         }
 
         private void ActivityGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            ValueChange(ActivityGrid);
+            try
+            {
+                exerciseControl.ExerciseValueChanged();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void ActivityGrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -139,57 +76,22 @@ namespace View
             {
                 if (e.ColumnIndex == 3)
                 {
-                    string task = ActivityGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
-
-                    if (task == "Delete")
-                    {
-                        if (MessageBox.Show("Ви хочете удалити цю строку?", "Удалити", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                            == DialogResult.Yes)
-                        {
-                            int rowIndex = e.RowIndex;
-                            ActivityGrid.Rows.RemoveAt(rowIndex);
-                            dataSet.Tables["Activities"].Rows[rowIndex].Delete();
-                            sqldataAdapter.Update(dataSet, "Activities");
-                        }
-                    }
-                    else if (task == "Insert")
-                    {
-                        int rowIndex = ActivityGrid.Rows.Count - 2;
-                        DataRow row = dataSet.Tables["Activities"].NewRow();
-
-                        row["Name"] = ActivityGrid.Rows[rowIndex].Cells["Name"].Value;
-                        row["CaloriesPerMinute"] = ActivityGrid.Rows[rowIndex].Cells["CaloriesPerMinute"].Value;
-
-
-                        dataSet.Tables["Activities"].Rows.Add(row);
-                        dataSet.Tables["Activities"].Rows.RemoveAt(dataSet.Tables["Activities"].Rows.Count - 1);
-
-                        ActivityGrid.Rows.RemoveAt(ActivityGrid.Rows.Count - 2);
-                        ActivityGrid.Rows[e.RowIndex].Cells[3].Value = "Delete";
-
-                        sqldataAdapter.Update(dataSet, "Activities");
-
-                        newRowAdding = false;
-
-                    }
-                    else if (task == "Update")
-                    {
-                        int r = e.RowIndex;
-
-                        dataSet.Tables["Activities"].Rows[r]["Name"] = ActivityGrid.Rows[r].Cells["Name"].Value;
-                        dataSet.Tables["Activities"].Rows[r]["CaloriesPerMinute"] = ActivityGrid.Rows[r].Cells["CaloriesPerMinute"].Value;
-
-                        ActivityGrid.Rows[e.RowIndex].Cells[3].Value = "Delete";
-
-                        sqldataAdapter.Update(dataSet, "Activities");
-
-                    }
-                    ReloadData("Activities");
+                    exerciseControl.ExerciseContentClick(e);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActivityGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(string.IsNullOrEmpty(ActivityGrid.CurrentRow.Cells[1].Value.ToString()) == false
+                && string.IsNullOrWhiteSpace(ActivityGrid.CurrentRow.Cells[2].Value.ToString()) == false)
+            {
+                exerciseName = ActivityGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+                caloriesperminet = double.Parse(ActivityGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
             }
         }
     }

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using BL.Control;
 
@@ -12,57 +9,70 @@ namespace View
 {
     public partial class Login : Form
     {
-
         public Login()
         {
             InitializeComponent();
         }
 
         public UserControler userController;
-       
+
         public void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                var name = nameField.Text;
+                string name = nameField.Text;
+                string gender = comboBox1.SelectedItem.ToString();
+                int age = int.Parse(ageField.Text);
+                double weight = double.Parse(weightField.Text);
+                double height = double.Parse(heightField.Text);
 
-                userController = new UserControler(name);
+                userController = new UserControler(name, "Users");
 
-                var gender = genderField.Text;
-                var birth = DateTime.Parse(ageField.Text);
-                var weight = Double.Parse(weightField.Text);
-                var height = Double.Parse(heightField.Text);
 
-               userController.SetNewUserData(gender, birth, weight, height);
-
-                this.Hide();
-                main mainform = new main(this);
-                mainform.Show();
-
+                if (userController.NewUser == true)
+                {
+                    userController.SetNewUserData(name, gender, age, weight, height);
+                    this.Hide();
+                    main mainform = new main(this);
+                    mainform.Owner = this;
+                    mainform.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Користувач з таким іменем вже існує", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
             }
             catch
             {
                 MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
             }
-
-           
         }
 
-      
+
         public void button2_Click(object sender, EventArgs e)
         {
-            var name = nameField2.Text;
-            userController = new UserControler(name);
-
-            if(userController.NewUser == false)
+            try
             {
-                this.Hide();
-                main mainform = new main(this);
-                mainform.Show();
-            }  
-        }
+                string name = nameField2.Text;
+                userController = new UserControler(name, "Users");
 
-        
+                if (userController.NewUser == false)
+                {
+                    this.Hide();
+                    main mainform = new main(this);
+                    mainform.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Користувача з таким іменем не існує", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+            }
+        }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
