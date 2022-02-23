@@ -1,31 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="View.Activ">
-    <Position X="0.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAAAAAAAACAAQBAAIAiAAAACAAAIACIBCEACAQQEAAA=</HashCode>
-      <FileName>Activity.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="View.FoodForm">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="2.25" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>ICAAABAAECEAABAAAAiAGhICACCYAQABAEAQkSAAAAA=</HashCode>
       <FileName>Food.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="View.Login">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="4" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAgAAAACIAABATAoCAAAACAAAYAAAAAGAAAQAAgAI=</HashCode>
       <FileName>Login.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="View.main">
-    <Position X="5.75" Y="0.5" Width="1.5" />
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>sAAiAAAAACAAABACAAGAABcCAACEAAwEAAIAAQRAAAA=</HashCode>
+      <HashCode>sAAiBAQIACAAABACAAGAABcCAACEAAwEAAIAAQRAAAA=</HashCode>
       <FileName>main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="View.ActivityForm">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAACAAQBAAIAiAAAACAAAIACIBCEACAQQEAAA=</HashCode>
+      <FileName>Activity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="View.Program">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using BL.Control;
-
 
 namespace View
 {
@@ -29,7 +26,7 @@ namespace View
                 userController = new UserControler(name, "Users");
 
 
-                if (userController.NewUser == true)
+                if (userController.NewUser == true && age > 0 && age < 150 && weight > 0&& weight < 400 && height > 0 && height < 300)
                 {
                     userController.SetNewUserData(name, gender, age, weight, height);
                     this.Hide();
@@ -52,8 +49,6 @@ namespace View
 
         public void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
                 string name = nameField2.Text;
                 userController = new UserControler(name, "Users");
 
@@ -67,11 +62,6 @@ namespace View
                 {
                     MessageBox.Show("Користувача з таким іменем не існує", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-            }
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)

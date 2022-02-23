@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using BL.Control;
 using BL.Model;
 
 namespace View
 {
-    public partial class Activ : Form  
+    public partial class ActivityForm : Form  
     {
         ExerciseControl exerciseControl;
         string tableName = "Activities";
@@ -17,7 +13,7 @@ namespace View
         double caloriesperminet, burned;
         private Label Calories;
 
-        public Activ()
+        public ActivityForm()
         {
             InitializeComponent();
         }
@@ -50,9 +46,9 @@ namespace View
             {
                 exerciseControl.ExerciseAddRow();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
         }
@@ -63,9 +59,9 @@ namespace View
             {
                 exerciseControl.ExerciseValueChanged();
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
@@ -79,9 +75,9 @@ namespace View
                     exerciseControl.ExerciseContentClick(e);
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BL.Model
+﻿namespace BL.Model
 {
     public class Food
     {
@@ -12,11 +6,11 @@ namespace BL.Model
 
         public string Name { get; set; }
 
-        public double Proteines { get; set; } //belki
+        public double Proteines { get; set; } 
 
-        public double Fats { get; set; } //giri
+        public double Fats { get; set; } 
 
-        public double Carbohydrates { get; set; } //uglerodi
+        public double Carbohydrates { get; set; }
 
         public double Calories { get; set; }
 

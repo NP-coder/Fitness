@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class Activ
+    partial class ActivityForm
     {
         /// <summary>
         /// Required designer variable.
@@ -140,7 +140,7 @@
             this.label1.Text = "Вправи";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Activ
+            // ActivityForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,7 +149,7 @@
             this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(500, 569);
             this.MinimumSize = new System.Drawing.Size(500, 569);
-            this.Name = "Activ";
+            this.Name = "ActivityForm";
             this.Text = "Activity";
             this.Load += new System.EventHandler(this.Activity_Load);
             this.panel3.ResumeLayout(false);

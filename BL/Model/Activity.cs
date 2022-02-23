@@ -1,5 +1,4 @@
-﻿
-namespace BL.Model
+﻿namespace BL.Model
 {
     public class Activity
     {

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Data;
 using System.Windows.Forms;
 using BL.Control;
-using BL.Model;
 
 namespace View
 {
@@ -28,26 +26,42 @@ namespace View
 
         private void Exercise_Click(object sender, EventArgs e)
         {
-            Activ activityform = new Activ();
+            ActivityForm activityform = new ActivityForm();
             activityform.Owner = this;
             activityform.Show();
         }
 
         private void ActivLevel_SelectedIndexChanged(object sender, EventArgs e) 
         {
+            double currentcalories;
             if (ActivLevel.SelectedIndex == 0)
             {
                 activlevel = 1.3;
+                currentcalories = usercontroler.HarissBenedict(activlevel);
+                currentcalories = currentcalories / 6;
+                BelkiMax.Text = Math.Round(currentcalories / 4).ToString();
+                FatsMax.Text = Math.Round(currentcalories / 9).ToString();
+                UglerodMax.Text = Math.Round(currentcalories).ToString();
                 CaloriesMax.Text = usercontroler.HarissBenedict(activlevel).ToString();
             }
             else if (ActivLevel.SelectedIndex == 1)
             {
                 activlevel = 1.55;
+                currentcalories = usercontroler.HarissBenedict(activlevel);
+                currentcalories = currentcalories / 6;
+                BelkiMax.Text = Math.Round(currentcalories / 4).ToString();
+                FatsMax.Text = Math.Round(currentcalories / 9).ToString();
+                UglerodMax.Text = Math.Round(currentcalories).ToString();
                 CaloriesMax.Text = usercontroler.HarissBenedict(activlevel).ToString();
             }
             else if (ActivLevel.SelectedIndex == 2)
             {
                 activlevel = 1.8;
+                currentcalories = usercontroler.HarissBenedict(activlevel);
+                currentcalories = currentcalories / 6;
+                BelkiMax.Text = Math.Round(currentcalories / 4).ToString();
+                FatsMax.Text = Math.Round(currentcalories / 9).ToString();
+                UglerodMax.Text = Math.Round(currentcalories).ToString();
                 CaloriesMax.Text = usercontroler.HarissBenedict(activlevel).ToString();
             }
             else

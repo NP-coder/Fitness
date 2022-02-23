@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace BL.Model
 {
@@ -19,33 +18,6 @@ namespace BL.Model
 
         public User(string name, string gender, int age, double weight, double height)
         {
-            #region exeption
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentNullException("Неможливе ім'я користувача.", nameof(name));
-            }
-
-            if(gender == null)
-            {
-                throw new ArgumentNullException("Неможливий пол.", nameof(gender));
-            }
-
-            if(age < 1 || age >= 150)
-            {
-                throw new ArgumentNullException("Неможлива дата народження.", nameof(age));
-            }
-
-            if(weight <= 0)
-            {
-                throw new ArgumentNullException("Неможлива вага.", nameof(weight));
-            }
-
-            if(height <= 0)
-            {
-                throw new ArgumentNullException("Неможливий зріст.", nameof(height));
-            }
-            #endregion
-
             Name = name;
             Gender = gender;
             Age = age;
@@ -57,10 +29,6 @@ namespace BL.Model
 
         public User(string name)
         {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentNullException("Неможливе ім'я користувача.", nameof(name));
-            }
 
             Name = name;
         }

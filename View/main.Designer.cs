@@ -30,6 +30,9 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BelkiMax = new System.Windows.Forms.Label();
+            this.UglerodMax = new System.Windows.Forms.Label();
+            this.FatsMax = new System.Windows.Forms.Label();
             this.BurnedCalories = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.CaloriesMax = new System.Windows.Forms.Label();
@@ -70,6 +73,9 @@
             // 
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(164)))), ((int)(((byte)(255)))));
+            this.panel2.Controls.Add(this.BelkiMax);
+            this.panel2.Controls.Add(this.UglerodMax);
+            this.panel2.Controls.Add(this.FatsMax);
             this.panel2.Controls.Add(this.BurnedCalories);
             this.panel2.Controls.Add(this.label);
             this.panel2.Controls.Add(this.CaloriesMax);
@@ -95,6 +101,39 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(807, 563);
             this.panel2.TabIndex = 2;
+            // 
+            // BelkiMax
+            // 
+            this.BelkiMax.AutoSize = true;
+            this.BelkiMax.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BelkiMax.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BelkiMax.Location = new System.Drawing.Point(226, 358);
+            this.BelkiMax.Name = "BelkiMax";
+            this.BelkiMax.Size = new System.Drawing.Size(23, 23);
+            this.BelkiMax.TabIndex = 24;
+            this.BelkiMax.Text = "0";
+            // 
+            // UglerodMax
+            // 
+            this.UglerodMax.AutoSize = true;
+            this.UglerodMax.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UglerodMax.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.UglerodMax.Location = new System.Drawing.Point(650, 358);
+            this.UglerodMax.Name = "UglerodMax";
+            this.UglerodMax.Size = new System.Drawing.Size(23, 23);
+            this.UglerodMax.TabIndex = 23;
+            this.UglerodMax.Text = "0";
+            // 
+            // FatsMax
+            // 
+            this.FatsMax.AutoSize = true;
+            this.FatsMax.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FatsMax.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.FatsMax.Location = new System.Drawing.Point(617, 288);
+            this.FatsMax.Name = "FatsMax";
+            this.FatsMax.Size = new System.Drawing.Size(23, 23);
+            this.FatsMax.TabIndex = 22;
+            this.FatsMax.Text = "0";
             // 
             // BurnedCalories
             // 
@@ -123,7 +162,7 @@
             this.CaloriesMax.AutoSize = true;
             this.CaloriesMax.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CaloriesMax.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CaloriesMax.Location = new System.Drawing.Point(241, 286);
+            this.CaloriesMax.Location = new System.Drawing.Point(251, 286);
             this.CaloriesMax.Name = "CaloriesMax";
             this.CaloriesMax.Size = new System.Drawing.Size(23, 23);
             this.CaloriesMax.TabIndex = 18;
@@ -160,11 +199,11 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label13.Location = new System.Drawing.Point(205, 358);
+            this.label13.Location = new System.Drawing.Point(196, 358);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 23);
+            this.label13.Size = new System.Drawing.Size(25, 23);
             this.label13.TabIndex = 15;
-            this.label13.Text = "з 90";
+            this.label13.Text = "з ";
             // 
             // Calories
             // 
@@ -193,11 +232,11 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label10.Location = new System.Drawing.Point(637, 357);
+            this.label10.Location = new System.Drawing.Point(625, 357);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 23);
+            this.label10.Size = new System.Drawing.Size(25, 23);
             this.label10.TabIndex = 12;
-            this.label10.Text = "з 400";
+            this.label10.Text = "з ";
             // 
             // Fats
             // 
@@ -215,11 +254,11 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(599, 287);
+            this.label8.Location = new System.Drawing.Point(596, 287);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 23);
+            this.label8.Size = new System.Drawing.Size(25, 23);
             this.label8.TabIndex = 10;
-            this.label8.Text = "з 90";
+            this.label8.Text = "з ";
             // 
             // label7
             // 
@@ -305,7 +344,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(218, 285);
+            this.label4.Location = new System.Drawing.Point(226, 286);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 23);
             this.label4.TabIndex = 5;
@@ -390,5 +429,8 @@
         public System.Windows.Forms.Label Fats;
         private System.Windows.Forms.Label label;
         public System.Windows.Forms.Label BurnedCalories;
+        public System.Windows.Forms.Label BelkiMax;
+        public System.Windows.Forms.Label UglerodMax;
+        public System.Windows.Forms.Label FatsMax;
     }
 }

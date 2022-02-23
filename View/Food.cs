@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BL.Control;
 using BL.Model;
@@ -81,9 +75,9 @@ namespace View
                     eatControl.EatContentClick(e);
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -93,22 +87,21 @@ namespace View
             {               
                 eatControl.FoodValueChanged();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void FoodGrid_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            //TODO перенест bool в контр в методи або через конструктор
             try
             {
                 eatControl.FoodAddRow();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введені некоректні дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
